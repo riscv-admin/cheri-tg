@@ -12,7 +12,7 @@ Given the commercial demonstration of the effectiveness of CHERI, multiple vendo
 
 To create a standardization task group to specify three specifications:
 
-* Usermode CHERI RV64 and RV32 extensions (initially no vector support)
+* Usermode CHERI RV64 and RV32 extensions
 
 * Privileged CHERI RV64 and RV32 extensions
 
