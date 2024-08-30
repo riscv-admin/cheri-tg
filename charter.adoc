@@ -10,32 +10,27 @@ Given the commercial demonstration of the effectiveness of CHERI, multiple vendo
 
 == Objectives
 
-To create a standardization task group to specify three specifications:
+To create a standardization task group to create the following specifications:
 
-* Usermode CHERI RV64 and RV32 extensions
-
-* Privileged CHERI RV64 and RV32 extensions
-
-* CHERI RV64 and RV32 ABIs
+- Usermode CHERI RV64 and RV32 extensions
+- Privileged CHERI RV64 and RV32 extensions
+- CHERI RVA23[US]64 compatibility
+- CHERI RV64 and RV32 ABIs in conjunction with the psABI TG
 
 This will include specifying requirements for:
 
-* Encoding 128-bit capabilities over a 64-bit baseline ISA; encoding 64-bit capabilities over a 32-bit baseline ISA
-
-* Tagged memory to support capability validity tags
-
-* CHERI extensions to the RV64 and RV32 ISA to support efficient temporal memory safety, initially for C/C++ memory protection
-
-* ABI details including register conventions, calling conventions, and C/C++ types
-
-* CHERI features to support safe, capability-aware exception handling
-
-* CHERI features to support compartmentalization models
+- Encoding 128-bit capabilities over a 64-bit baseline ISA; encoding 64-bit capabilities over a 32-bit baseline ISA
+- Tagged memory to support capability validity tags
+- CHERI extensions to the RV64 and RV32 ISA to support efficient temporal memory safety, initially for C/C++ memory protection
+- ABI details including register conventions, calling conventions, and C/C++ types
+- CHERI features to support safe, capability-aware exception handling
+- CHERI features to support compartmentalization models
+- Ensure RV32 can support the CHERIoT software model
 
 The task group will coordinate efforts to:
 
-* Update the CHERI-RISC-V Sail model to the most recent baseline RISC-V model
-
-* Develop a CHERI-RISC-V test suite
-
-* Add support for at least one compiler to target CHERI-RISC-V as specified (LLVM support exists already for the current academic prototype)
+- Update the CHERI-RISC-V Sail model to the most recent baseline RISC-V model
+- Develop a CHERI-RISC-V test suite
+- Add support for at least one compiler to target CHERI-RISC-V as specified (LLVM support exists already for the current academic prototype)
+- Demonstrate addition of CHERI support to POSIX and embedded operating systems
+- Engage with upstream OS and compiler vendors to contribute these changes
