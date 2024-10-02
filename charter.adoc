@@ -2,11 +2,12 @@
 
 == Introduction, Motivation and Background
 
-Memory safety is the biggest security threat to computer systems: Microsoft and Google Chromium identifying 70% of their critical vulnerabilities being in this class. CHERI-based memory safety has arisen from research starting in 2010 to be the focus of the link:https://www.dsbd.tech/[Innovate UK Digital Security by Design Program] (£90m UK government funding and over £200m from industry). Under this program, ARM Ltd has produced the Morello prototype: quad-core CHERI-ARM superscalar processors and GPU on a 7nm TSMC process, demonstrating little performance or area penalty from adding this security technology.  Initially 1,000 Morello units have been shipped to partners for evaluation.
+Memory safety is the biggest security threat to computer systems: Microsoft and Google Chromium identifying 70% of their critical vulnerabilities being in this class. CHERI-based memory safety has arisen from research starting in 2010 to be the focus of the link:https://www.dsbd.tech/[Innovate UK Digital Security by Design Program] (£90m UK government funding and over £200m from industry). Under this program, ARM Ltd has produced the Morello prototype: quad-core CHERI-ARM superscalar processors and GPU on a 7nm TSMC process, demonstrating little performance or area penalty from adding this security technology. Initially 1,000 Morello units have been shipped to partners for evaluation.
 
 Microsoft's Security Response Center's 42-page report link:https://github.com/microsoft/MSRC-Security-Research/blob/master/papers/2020/Security%20analysis%20of%20CHERI%20ISA.pdf[Security Analysis of CHERI ISA] concludes that over ⅔ of all of Microsoft's critical memory-safety vulnerabilities in 2019 would have been deterministically mitigated by CHERI - the closest competing technology, tagged memory extensions, achieved only 13% deterministic mitigation. Tens of millions of lines of C/C++ code have now been ported to CHERI including work by link:https://www.capabilitieslimited.co.uk/_files/ugd/f4d681_e0f23245dace466297f20a0dbd22d371.pdf[Capabilities Limited] who measured just 0.026% lines-of-code change when porting an open-source desktop application stack including X11 and KDE. Microsoft's Azure Silicon team has developed and released link:https://www.microsoft.com/en-us/research/publication/cheriot-rethinking-security-for-low-cost-embedded-systems/[CHERIoT: Rethinking security for low-cost embedded systems] that includes an open-source link:https://github.com/microsoft/CherIoT-ibex[CHERIoT on Ibex] - a CHERI extended embedded RISC-V core. The CHERIoT RTOS demonstrates how CHERI can provide scalable compartmentalisation and memory protection, which is more scalable and uses comparable silicon area to a PMP (physical memory protection as defined in the RISC-V privileged spec). The intergovernmental report link:https://www.cisa.gov/sites/default/files/2023-04/principles_approaches_for_security-by-design-default_508_0.pdf[Shifting the Balance of Cybersecurity Risk: Principles and Approaches for Security-by-Design and -Default] recommends CHERI as the secure hardware foundation for future systems, and also recommends the use of software compartmentalisation that CHERI supports efficiently.
 
 Given the commercial demonstration of the effectiveness of CHERI, multiple vendors with in-flight hardware implementations, the practicality of porting software, and the regulatory push toward CHERI to fundamentally improve security of computer systems, we aim to produce a standardized CHERI extension to RISC-V for both RV64 and RV32.
+
 
 == Objectives
 
@@ -22,15 +23,19 @@ This will include specifying requirements for:
 - Encoding 128-bit capabilities over a 64-bit baseline ISA; encoding 64-bit capabilities over a 32-bit baseline ISA
 - Tagged memory to support capability validity tags
 - CHERI extensions to the RV64 and RV32 ISA to support efficient temporal memory safety, initially for C/C++ memory protection
-- ABI details including register conventions, calling conventions, and C/C++ types
 - CHERI features to support safe, capability-aware exception handling
 - CHERI features to support compartmentalization models
-- Ensure RV32 can support the CHERIoT software model
+- ABI details including register conventions, calling conventions, and C/C++ types
+- Ensure CHERI for RV32 can support the CHERIoT software model
 
 The task group will coordinate efforts to:
 
 - Update the CHERI-RISC-V Sail model to the most recent baseline RISC-V model
-- Develop a CHERI-RISC-V test suite
-- Add support for at least one compiler to target CHERI-RISC-V as specified (LLVM support exists already for the current academic prototype)
-- Demonstrate addition of CHERI support to POSIX and embedded operating systems
-- Engage with upstream OS and compiler vendors to contribute these changes
+- Develop a CHERI-RISC-V test suite and define the required coverage points
+- Add support for at least one compiler to target CHERI-RISC-V as specified (LLVM support exists already)
+- Demonstrate addition of CHERI support to both application-class POSIX and embedded operating systems
+- Engage with OS and compiler vendors to contribute these changes upstream
+- Add CHERI support to the QEMU emulator
+- Add CHERI support to the GDB debugger
+- Review non-ISA SoC components for CHERI compatibility and document any impact
+- Update the SBI specification to include support for CHERI-enabled systems and submit the OpenSBI CHERI port upstream
